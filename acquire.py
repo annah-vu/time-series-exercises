@@ -129,4 +129,9 @@ def get_germany_power():
         data = pd.read_csv("https://raw.githubusercontent.com/jenfly/opsd/master/opsd_germany_daily.csv")
         data.to_csv('germany_power.csv')
     return data
-        
+
+def combine_store_data():
+    df = combined_data()
+    df = df.drop(columns=['item_upc14'])
+    df = df.rename(columns={"item_upc12": "item_upc"})
+    return df
